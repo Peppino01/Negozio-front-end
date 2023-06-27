@@ -8,18 +8,22 @@
 
 }
 
+.dettaglioDipendenteContainer{
+    align-self: center;
+}
+
 .nuovoDipendenteContainer{
     
 }
 
 form{
-    padding: 20px;
+    padding: 20px 0 20px 0;
 }
 
 mat-form-field{
     margin: 0 10px 0 10px;
 
-    width: 250px;
+    width: 200px;
 }
 
 a{
@@ -39,4 +43,20 @@ a{
 .pageTitle{
     padding: 16px;
     margin: 0;
+}
+
+.dipendenteItem{
+    cursor: pointer;
+    user-select: none;
+}
+.dipendenteItem:hover{
+    background-color: aliceblue;
+}
+
+.dipendenteItemSelezionato{
+    background-color: aliceblue;
+}
+
+.dettaglioLabel{
+    color: gray;
 }

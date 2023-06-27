@@ -5,11 +5,29 @@
     <div class="listaDipendentiContainer">
         <h1 class="pageTitle">Lista dipendenti</h1>
         <mat-list>
-            <mat-list-item *ngFor="let folder of dipendenti">
-              <div mat-line>{{folder.nome}} {{folder.cognome}}</div>
-              <div mat-line>{{folder.email}}</div>
+            <mat-list-item *ngFor="let dipendente of dipendenti" (click)="openDipendenteDettaglio(dipendente)" [ngClass]="dipendente == dettaglioDipendente ? 'dipendenteItemSelezionato' : ''" class="dipendenteItem">
+                <div mat-line>{{dipendente.nome}} {{dipendente.cognome}}</div>
+                <div mat-line>{{dipendente.email}}</div>
             </mat-list-item>
-          </mat-list>
+        </mat-list>
+    </div>
+
+    <div *ngIf="dettaglioDipendente" class="dettaglioDipendenteContainer">
+        <h3>{{dettaglioDipendente.nome}} {{dettaglioDipendente.cognome}}</h3>
+        <label class="dettaglioLabel" for="email">Email:</label>
+        <p id="email">{{dettaglioDipendente.email}}</p>
+        <mat-divider></mat-divider>
+        <label class="dettaglioLabel" for="email">Password:</label>
+        <p id="email">{{dettaglioDipendente.password}}</p>
+        <mat-divider></mat-divider>
+        <label class="dettaglioLabel" for="email">Numero di telefono:</label>
+        <p id="email">{{dettaglioDipendente.numTelefono}}</p>
+        <mat-divider></mat-divider>
+        <label class="dettaglioLabel" for="email">Data di nascita:</label>
+        <p id="email">{{dettaglioDipendente.dataNascita}}</p>
+        <mat-divider></mat-divider>
+        <label class="dettaglioLabel" for="email">Stipendio:</label>
+        <p id="email">{{dettaglioDipendente.stipendio}}</p>
     </div>
 
     <div class="nuovoDipendenteContainer">

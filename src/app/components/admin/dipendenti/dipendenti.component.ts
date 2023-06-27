@@ -29,6 +29,7 @@ export class DipendentiComponent implements OnInit {
   newDipendenteForm: FormGroup
 
   dipendenti: Dipendente[] = []
+  dettaglioDipendente: Dipendente | null = null
 
   constructor(
     private formBuilder: FormBuilder,
@@ -93,6 +94,14 @@ export class DipendentiComponent implements OnInit {
         this.errorMessage = responseError.error
       }
     )
+  }
+
+  openDipendenteDettaglio(dipendente: Dipendente) {
+    if(dipendente == this.dettaglioDipendente) {
+      this.dettaglioDipendente = null
+    } else if(dipendente) {
+      this.dettaglioDipendente = dipendente
+    }
   }
 
 }
