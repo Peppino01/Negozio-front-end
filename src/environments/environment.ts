@@ -4,5 +4,5 @@
 
 export const environment = {
   production: false,
-  hostname: "localhost:8080"
+  hostname: "http://localhost:8080"
 };

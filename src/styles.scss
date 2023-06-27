@@ -2,3 +2,26 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+a {
+  color: blue; /* Colore del testo */
+  text-decoration: none; /* Rimuove la sottolineatura */
+}
+
+a:hover {
+  color: red; /* Colore del testo al passaggio del mouse */
+  text-decoration: underline; /* Sottolinea il testo al passaggio del mouse */
+}
+
+a:visited {
+  color: purple; /* Colore del testo per i link visitati */
+}
+
+a:focus {
+  outline: none; /* Rimuove l'outline di focus */
+}
+
+.errorMessage{
+  color: red;
+}

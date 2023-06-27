@@ -1,1 +1,56 @@
-<p>signin works!</p>
+<div class="signinContainer">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Registrazione</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <form [formGroup]="signinForm">
+        <mat-form-field appearance="fill">
+          <input matInput placeholder="Nome" formControlName="nome">
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+          <input matInput placeholder="Cognome" formControlName="cognome">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <input matInput placeholder="Email" formControlName="email" required>
+          <mat-error *ngIf="signinForm.controls['email'].hasError('required')">Campo obbligatorio</mat-error>
+          <mat-error *ngIf="signinForm.controls['email'].hasError('email')">Email non valida</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+          <input matInput placeholder="Password" formControlName="password" required>
+          <mat-error *ngIf="signinForm.controls['password'].hasError('required')">Campo obbligatorio</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <input matInput placeholder="Numero di telefono" formControlName="numTelefono">
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+          <input matInput [matDatepicker]="datePicker" placeholder="Data di nascita" formControlName="dataNascita">
+          <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+          <mat-datepicker #datePicker></mat-datepicker>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-select placeholder="Genere" formControlName="genere">
+            <mat-option *ngFor="let genere of generi" [value]="genere">{{ genere | capitalizeFirstLetter }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <div class="submitContainer">
+          <button mat-raised-button color="primary" (click)="signin()">Registrati</button>
+        </div>
+        
+      </form>
+      
+      <a (click)="goToLogin()">Ho già un account</a>
+      <br><br>
+      <p class="errorMessage">{{errorMessage}}</p>
+
+</mat-card-content>
+</mat-card>
+</div>

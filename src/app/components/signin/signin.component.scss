@@ -1,0 +1,28 @@
+.signinContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+form{
+    padding: 20px;
+}
+
+mat-form-field{
+    margin: 10px;
+
+    width: 250px;
+}
+
+a{
+    cursor: pointer;
+}
+
+.submitContainer{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.errorMessage{
+    text-align: center;
+}
