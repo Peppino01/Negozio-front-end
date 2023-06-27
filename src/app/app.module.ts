@@ -5,10 +5,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
-import { SigninComponent } from './components/signin/signin.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { VetrinaComponent } from './components/vetrina/vetrina.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // material
@@ -21,6 +17,18 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import { RequestInterceptor } from './request.interceptor';
 import { CapitalizeFirstLetterPipe } from './capitalize-first-letter.pipe';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+
+import { LoginComponent } from './components/login/login.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { VetrinaComponent } from './components/vetrina/vetrina.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { HomeAdminComponent } from './components/admin/home-admin/home-admin.component';
+import { DipendentiComponent } from './components/admin/dipendenti/dipendenti.component';
+import { ProdottiComponent } from './components/admin/prodotti/prodotti.component';
+import { RegistroComponent } from './components/admin/registro/registro.component';
 
 
 
@@ -31,7 +39,12 @@ import { CapitalizeFirstLetterPipe } from './capitalize-first-letter.pipe';
     SigninComponent,
     NotFoundComponent,
     VetrinaComponent,
-    CapitalizeFirstLetterPipe
+    CapitalizeFirstLetterPipe,
+    ToolbarComponent,
+    HomeAdminComponent,
+    DipendentiComponent,
+    ProdottiComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +59,9 @@ import { CapitalizeFirstLetterPipe } from './capitalize-first-letter.pipe';
     MatDatepickerModule,
     MatSelectModule,
     MatNativeDateModule,
-    HttpClientModule
+    HttpClientModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [
     {

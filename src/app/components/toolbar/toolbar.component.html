@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+
+    <!--<button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>-->
+
+    <span>Amministratore</span>
+    
+    <!--<button mat-icon-button>
+      <mat-icon>account_circle</mat-icon>
+    </button>-->
+
+    <span class="spacer"></span>
+  
+    <ng-container *ngFor="let page of pages">
+      <a mat-button (click)="navigate(page)">{{ page.title }}</a>
+    </ng-container>
+
+</mat-toolbar>
+  

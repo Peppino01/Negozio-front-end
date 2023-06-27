@@ -4,5 +4,15 @@
 
 export const environment = {
   production: false,
-  hostname: "http://localhost:8080"
+  hostname: "http://localhost:8080",
+  pagesUrl: {
+    "login": "login",
+    "signin": "signin",
+    "vetrina": "vetrina",
+
+    "admin": "admin",
+    "gestione_dipendenti": "admin/dipendenti",
+    "gestione_prodotti": "admin/prodotti",
+    "registro": "admin/registro"
+  }
 };
