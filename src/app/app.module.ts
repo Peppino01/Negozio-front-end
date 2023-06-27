@@ -19,6 +19,7 @@ import { RequestInterceptor } from './request.interceptor';
 import { CapitalizeFirstLetterPipe } from './capitalize-first-letter.pipe';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 import { LoginComponent } from './components/login/login.component';
 import { SigninComponent } from './components/signin/signin.component';
@@ -61,7 +62,8 @@ import { RegistroComponent } from './components/admin/registro/registro.componen
     MatNativeDateModule,
     HttpClientModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule
   ],
   providers: [
     {

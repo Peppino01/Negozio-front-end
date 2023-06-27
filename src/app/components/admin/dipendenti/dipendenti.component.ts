@@ -1,14 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Cliente } from 'src/app/shared/model/Cliente';
 import { Dipendente } from 'src/app/shared/model/Dipendente';
 import { Genere } from 'src/app/shared/model/Genere';
 import { Page } from 'src/app/shared/model/Page';
 import { AdminService } from 'src/app/shared/services/admin.service';
-import { AuthService } from 'src/app/shared/services/auth.service';
 import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-dipendenti',
@@ -30,9 +28,10 @@ export class DipendentiComponent implements OnInit {
 
   newDipendenteForm: FormGroup
 
+  dipendenti: Dipendente[] = []
+
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
     private adminService: AdminService
   ) {
     this.newDipendenteForm = this.formBuilder.group({
@@ -47,6 +46,30 @@ export class DipendentiComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.adminService.getAllDipendenti().subscribe(
+      (res: Dipendente[]) => {
+        // popolo dipendenti
+        res.forEach(
+          d => {
+            this.dipendenti.push(new Dipendente(
+              d.nome,
+              d.cognome,
+              d.email,
+              d.password,
+              d.numTelefono,
+              d.dataNascita,
+              d.stipendio,
+              d.id
+            ))
+          }
+        )
+        this.errorMessage = ""
+      },
+      (responseError: HttpErrorResponse) => {
+        console.log(responseError);
+        this.errorMessage = responseError.error
+      }
+    )
   }
 
   signin(): void {
@@ -64,9 +87,9 @@ export class DipendentiComponent implements OnInit {
       (res: Object) => {
         console.log(res);
         this.errorMessage = ""
+        location.reload()
       },
       (responseError: HttpErrorResponse) => {
-        console.log(responseError);
         this.errorMessage = responseError.error
       }
     )

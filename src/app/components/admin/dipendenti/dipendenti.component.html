@@ -3,7 +3,13 @@
 <div class="pageContainer">
 
     <div class="listaDipendentiContainer">
-        Lista dipendenti
+        <h1 class="pageTitle">Lista dipendenti</h1>
+        <mat-list>
+            <mat-list-item *ngFor="let folder of dipendenti">
+              <div mat-line>{{folder.nome}} {{folder.cognome}}</div>
+              <div mat-line>{{folder.email}}</div>
+            </mat-list-item>
+          </mat-list>
     </div>
 
     <div class="nuovoDipendenteContainer">
@@ -35,6 +41,7 @@
                     <mat-label>Password</mat-label>
                     <input matInput formControlName="password" required>
                     <mat-error *ngIf="newDipendenteForm.controls['password'].hasError('required')">Campo obbligatorio</mat-error>
+                    <mat-error *ngIf="newDipendenteForm.controls['password'].hasError('minLength')">La password deve essere lunga almeno 8 caratteri</mat-error>
                 </mat-form-field>
                 <br>
                 <mat-form-field appearance="fill">
@@ -57,7 +64,7 @@
                 </mat-form-field>
                 <br>
                 <div class="submitContainer">
-                    <button mat-raised-button color="primary" (click)="signin()">Registrati</button>
+                    <button [disabled]="newDipendenteForm.invalid" mat-raised-button color="primary" (click)="signin()">Registrati</button>
                 </div>
                 
               </form>

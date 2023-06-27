@@ -20,4 +20,8 @@ export class AdminService {
     return this.http.post(environment.hostname + '/admin/createDipendente', body, {headers})
   }
 
+  getAllDipendenti(): Observable<any> {
+    return this.http.get(environment.hostname + '/admin/allDipendenti')
+  }
+
 }
