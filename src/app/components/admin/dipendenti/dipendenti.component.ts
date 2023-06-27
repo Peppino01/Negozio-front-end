@@ -1,5 +1,13 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Cliente } from 'src/app/shared/model/Cliente';
+import { Dipendente } from 'src/app/shared/model/Dipendente';
+import { Genere } from 'src/app/shared/model/Genere';
 import { Page } from 'src/app/shared/model/Page';
+import { AdminService } from 'src/app/shared/services/admin.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -16,9 +24,52 @@ export class DipendentiComponent implements OnInit {
     { title: 'Registro', url: environment.pagesUrl.registro }
   ];
 
-  constructor() { }
+  errorMessage: string = ""
+
+  generi: Genere[] = Object.values(Genere)
+
+  newDipendenteForm: FormGroup
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private adminService: AdminService
+  ) {
+    this.newDipendenteForm = this.formBuilder.group({
+      nome: ['Giuseppe', Validators.required],
+      cognome: ['Grammatico'],
+      email: ['g.grammatico@mail.com', [Validators.required, Validators.email]],
+      password: ['12345678', [Validators.required, Validators.minLength(8)]],
+      numTelefono: ['3471579668'],
+      dataNascita: ['2001-07-31'],
+      stipendio: ['1500', [Validators.required, Validators.min(0)]]
+    });
+  }
 
   ngOnInit(): void {
+  }
+
+  signin(): void {
+    let newDipendente: Dipendente = new Dipendente(
+      this.newDipendenteForm.get('nome')?.value,
+      this.newDipendenteForm.get('cognome')?.value,
+      this.newDipendenteForm.get('email')?.value,
+      this.newDipendenteForm.get('password')?.value,
+      this.newDipendenteForm.get('numTelefono')?.value,
+      this.newDipendenteForm.get('dataNascita')?.value,
+      this.newDipendenteForm.get('stipendio')?.value
+    )
+
+    this.adminService.addNewDipendente(newDipendente).subscribe(
+      (res: Object) => {
+        console.log(res);
+        this.errorMessage = ""
+      },
+      (responseError: HttpErrorResponse) => {
+        console.log(responseError);
+        this.errorMessage = responseError.error
+      }
+    )
   }
 
 }

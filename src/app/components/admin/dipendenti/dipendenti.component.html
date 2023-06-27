@@ -1,3 +1,71 @@
 <app-toolbar [pages]="linkedPages"></app-toolbar>
 
-Dipendenti
+<div class="pageContainer">
+
+    <div class="listaDipendentiContainer">
+        Lista dipendenti
+    </div>
+
+    <div class="nuovoDipendenteContainer">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Nuovo dipendente</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+        
+              <form [formGroup]="newDipendenteForm">
+                <mat-form-field appearance="fill">
+                    <mat-label>Nome</mat-label>
+                    <input matInput formControlName="nome">
+                </mat-form-field>
+                
+                <mat-form-field appearance="fill">
+                    <mat-label>Cognome</mat-label>
+                    <input matInput formControlName="cognome">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" required>
+                    <mat-error *ngIf="newDipendenteForm.controls['email'].hasError('required')">Campo obbligatorio</mat-error>
+                    <mat-error *ngIf="newDipendenteForm.controls['email'].hasError('email')">Email non valida</mat-error>
+                </mat-form-field>
+                
+                <mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" required>
+                    <mat-error *ngIf="newDipendenteForm.controls['password'].hasError('required')">Campo obbligatorio</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Numero di telefono</mat-label>
+                    <input matInput formControlName="numTelefono">
+                </mat-form-field>
+                
+                <mat-form-field appearance="fill">
+                    <mat-label>Data di nascita</mat-label>
+                    <input matInput [matDatepicker]="datePicker" formControlName="dataNascita">
+                    <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #datePicker></mat-datepicker>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Stipendio</mat-label>
+                    <input matInput type="number" formControlName="stipendio">
+                    <mat-error *ngIf="newDipendenteForm.controls['stipendio'].hasError('required')">Campo obbligatorio</mat-error>
+                    <mat-error *ngIf="newDipendenteForm.controls['stipendio'].hasError('min')">Lo stipendio non può essere negativo</mat-error>
+                </mat-form-field>
+                <br>
+                <div class="submitContainer">
+                    <button mat-raised-button color="primary" (click)="signin()">Registrati</button>
+                </div>
+                
+              </form>
+      
+              <p class="errorMessage">{{errorMessage}}</p>
+        
+            </mat-card-content>
+          </mat-card>
+    </div>
+
+</div>
