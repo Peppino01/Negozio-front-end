@@ -1,4 +1,4 @@
-export class Login {
+export class OutputLogin {
     email: string
     password: string
 

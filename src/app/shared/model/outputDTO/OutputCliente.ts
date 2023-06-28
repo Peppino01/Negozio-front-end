@@ -1,4 +1,7 @@
-export class Dipendente {
+import { Genere } from "../Genere"
+
+
+export class OutputCliente {
     id?: number
     nome: string
     cognome: string
@@ -6,16 +9,16 @@ export class Dipendente {
     password: string
     numTelefono: string
     dataNascita: Date
-    stipendio: number
+    genere: Genere
 
-    constructor(nome: string, cognome: string, email: string, password: string, numTelefono: string, dataNascita: Date, stipendio: number, id?: number) {
-        this.id = id
+    constructor(nome: string, cognome: string, email: string, password: string, numTelefono: string, dataNascita: Date, genere: Genere, id?: number) {
         this.nome = nome
         this.cognome = cognome
         this.email = email
         this.password = password
         this.numTelefono = numTelefono
         this.dataNascita = dataNascita
-        this.stipendio = stipendio
+        this.genere = genere
+        this.id = id
     }
 }

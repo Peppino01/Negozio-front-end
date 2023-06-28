@@ -1,35 +1,31 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Dipendente } from 'src/app/shared/model/Dipendente';
-import { Genere } from 'src/app/shared/model/Genere';
 import { Page } from 'src/app/shared/model/Page';
+import { InputDipendente } from 'src/app/shared/model/inputDTO/InputDipendente';
+import { OutputDipendente } from 'src/app/shared/model/outputDTO/OutputDipendente';
 import { AdminService } from 'src/app/shared/services/admin.service';
-import { environment } from 'src/environments/environment';
-
 
 @Component({
-  selector: 'app-dipendenti',
-  templateUrl: './dipendenti.component.html',
-  styleUrls: ['./dipendenti.component.scss']
+  selector: 'app-dipendenti-admin',
+  templateUrl: './dipendenti-admin.component.html',
+  styleUrls: ['./dipendenti-admin.component.scss']
 })
-export class DipendentiComponent implements OnInit {
+export class DipendentiAdminComponent implements OnInit {
 
   linkedPages: Page[] = [
-    { title: 'Home', url: environment.pagesUrl.admin },
-    { title: 'Gestione dipendenti', url: environment.pagesUrl.gestione_dipendenti },
-    { title: 'Gestione prodotti', url: environment.pagesUrl.gestione_prodotti },
-    { title: 'Registro', url: environment.pagesUrl.registro }
+    { title: 'Home', url: 'admin/home' },
+    { title: 'Gestione dipendenti', url: 'admin/dipendenti' },
+    { title: 'Gestione prodotti', url: 'admin/prodotti' },
+    { title: 'Registro', url: 'admin/registro' }
   ];
 
   errorMessage: string = ""
 
-  generi: Genere[] = Object.values(Genere)
-
   newDipendenteForm: FormGroup
 
-  dipendenti: Dipendente[] = []
-  dettaglioDipendente: Dipendente | null = null
+  dipendenti: InputDipendente[] = []
+  dettaglioDipendente: InputDipendente | null = null
 
   constructor(
     private formBuilder: FormBuilder,
@@ -48,11 +44,11 @@ export class DipendentiComponent implements OnInit {
 
   ngOnInit(): void {
     this.adminService.getAllDipendenti().subscribe(
-      (res: Dipendente[]) => {
+      (res: InputDipendente[]) => {
         // popolo dipendenti
         res.forEach(
           d => {
-            this.dipendenti.push(new Dipendente(
+            this.dipendenti.push(new InputDipendente(
               d.nome,
               d.cognome,
               d.email,
@@ -74,7 +70,7 @@ export class DipendentiComponent implements OnInit {
   }
 
   signin(): void {
-    let newDipendente: Dipendente = new Dipendente(
+    let newDipendente: OutputDipendente = new OutputDipendente(
       this.newDipendenteForm.get('nome')?.value,
       this.newDipendenteForm.get('cognome')?.value,
       this.newDipendenteForm.get('email')?.value,
@@ -96,12 +92,11 @@ export class DipendentiComponent implements OnInit {
     )
   }
 
-  openDipendenteDettaglio(dipendente: Dipendente) {
+  openDipendenteDettaglio(dipendente: InputDipendente) {
     if(dipendente == this.dettaglioDipendente) {
       this.dettaglioDipendente = null
     } else if(dipendente) {
       this.dettaglioDipendente = dipendente
     }
   }
-
 }

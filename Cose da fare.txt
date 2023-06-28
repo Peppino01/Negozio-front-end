@@ -1,3 +1,4 @@
-1. Implementare login multiplo, con una sola pagina di login accedono tutti i tipi di utenti, poi in base al loro ruolo verranno reinderizzzati nelle ripettive pagine
+V. Implementare login multiplo, con una sola pagina di login accedono tutti i tipi di utenti, poi in base al loro ruolo verranno reinderizzzati nelle ripettive pagine
 2. Salvare nel browser le credenziali del login così da poter poi fare l'autorizzazione per le richieste che lo richiedono
 3. Fare l'autorizzazione, nelle richieste dove serve avere uno specifico ruolo si deve fare il controllo su email e password (che verranno mandati come header nella richiesta)
+4. IMplementare erditarietà nelle Entity (aggiungere la classe Utente)

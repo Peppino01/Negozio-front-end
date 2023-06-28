@@ -1,4 +1,4 @@
-export class Recenzione {
+export class InputRecenzione {
     id: number
     dataPubblicazione: Date
     valutazione: number

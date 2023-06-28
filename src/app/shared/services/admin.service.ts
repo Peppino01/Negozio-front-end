@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Dipendente } from '../model/Dipendente';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { OutputDipendente } from '../model/outputDTO/OutputDipendente';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class AdminService {
     private http: HttpClient
   ) { }
 
-  addNewDipendente(newDipendente: Dipendente): Observable<any> {
+  addNewDipendente(newDipendente: OutputDipendente): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = JSON.stringify(newDipendente);
     

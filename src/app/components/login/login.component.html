@@ -5,16 +5,16 @@
     </mat-card-header>
     <mat-card-content>
 
-      <form>
+      <form [formGroup]="loginForm">
         <mat-form-field appearance="fill">
-          <input  matInput placeholder="Username" [(ngModel)]="email" name="username">
+          <input  matInput placeholder="Username" formControlName="email" name="username">
         </mat-form-field>
         <br><br>
         <mat-form-field appearance="fill">
-          <input matInput type="password" placeholder="Password" [(ngModel)]="password" name="password">
+          <input matInput type="password" placeholder="Password" formControlName="password" name="password">
         </mat-form-field>
         <br><br>
-        <button mat-raised-button color="primary" (click)="login()">Login</button>
+        <button [disabled]="loginForm.invalid" mat-raised-button color="primary" (click)="login()">Login</button>
       </form>
       
       <a (click)="goToSignin()">Registrati</a>

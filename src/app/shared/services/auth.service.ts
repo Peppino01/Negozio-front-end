@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Cliente } from '../model/Cliente';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Login } from '../model/Login';
+import { OutputLogin } from '../model/outputDTO/OutputLogin';
+import { InputLogin } from '../model/inputDTO/InputLogin';
+import { OutputCliente } from '../model/outputDTO/OutputCliente';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +15,14 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-  login(login: Login): Observable<any> {
+  login(login: OutputLogin): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = JSON.stringify(login);
     
     return this.http.post(environment.hostname + '/login', body, {headers})
   }
 
-  signin(newCliente: Cliente): Observable<any> {
+  signin(newCliente: OutputCliente): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = JSON.stringify(newCliente);
     

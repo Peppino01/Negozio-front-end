@@ -42,7 +42,7 @@
         </mat-form-field>
         <br>
         <div class="submitContainer">
-          <button mat-raised-button color="primary" (click)="signin()">Registrati</button>
+          <button [disabled]="signinForm.invalid" mat-raised-button color="primary" (click)="signin()">Registrati</button>
         </div>
         
       </form>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Page } from 'src/app/shared/model/Page';
 
@@ -8,6 +8,8 @@ import { Page } from 'src/app/shared/model/Page';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent {
+
+  @Input() title: string = ""
 
   @Input() pages: Page[] = []
 

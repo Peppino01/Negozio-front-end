@@ -1,0 +1,5 @@
+export enum Ruolo {
+    PROPRIETARIO = "PROPRIETARIO",
+    DIPENDENTE = "DIPENDENTE",
+    CLIENTE = "CLIENTE"
+}

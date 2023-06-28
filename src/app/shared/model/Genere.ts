@@ -3,4 +3,3 @@ export enum Genere {
     FEMMINA = 'FEMMINA',
     ALTRO = 'ALTRO'
 }
-  

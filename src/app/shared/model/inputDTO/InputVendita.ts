@@ -1,4 +1,4 @@
-export class Transazione {
+export class InputVendita {
     id: number
     idTransazione: number
     idProdotto: number

@@ -1,4 +1,4 @@
-export class Proprietario {
+export class OutputProprietario {
     id: number
     nome: string
     cognome: string

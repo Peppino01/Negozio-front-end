@@ -1,4 +1,4 @@
-export class Transazione {
+export class OutputTransazione {
     id: number
     data: Date
     idCliente: number

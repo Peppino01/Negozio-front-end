@@ -2,8 +2,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Cliente } from 'src/app/shared/model/Cliente';
 import { Genere } from 'src/app/shared/model/Genere';
+import { OutputCliente } from 'src/app/shared/model/outputDTO/OutputCliente';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -39,7 +39,7 @@ export class SigninComponent implements OnInit {
   }
 
   signin(): void {
-    let newUtente: Cliente = new Cliente(
+    let newUtente: OutputCliente = new OutputCliente(
       this.signinForm.get('nome')?.value,
       this.signinForm.get('cognome')?.value,
       this.signinForm.get('email')?.value,
@@ -51,10 +51,8 @@ export class SigninComponent implements OnInit {
 
     this.authService.signin(newUtente).subscribe(
       (res: Object) => {
-        console.log(res);
-        
         this.errorMessage = ""
-        this.router.navigateByUrl('/home')
+        this.router.navigateByUrl('/cliente/home')
       },
       (responseError: HttpErrorResponse) => {
         console.log(responseError);

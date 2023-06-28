@@ -1,6 +1,6 @@
-import { StatoProdotto } from "./StatoProdotto"
+import { StatoProdotto } from "../StatoProdotto"
 
-export class Prodotto {
+export class InputProdotto {
     id: number
     nome: string
     prezzo: number

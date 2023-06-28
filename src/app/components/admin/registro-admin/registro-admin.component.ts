@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Page } from 'src/app/shared/model/Page';
-import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-home-admin',
-  templateUrl: './home-admin.component.html',
-  styleUrls: ['./home-admin.component.scss']
+  selector: 'app-registro-admin',
+  templateUrl: './registro-admin.component.html',
+  styleUrls: ['./registro-admin.component.scss']
 })
-export class HomeAdminComponent implements OnInit {
+export class RegistroAdminComponent implements OnInit {
 
   linkedPages: Page[] = [
     { title: 'Home', url: 'admin/home' },
