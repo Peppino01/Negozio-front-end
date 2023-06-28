@@ -1,0 +1,36 @@
+.pageContainer{
+    padding: 100px;
+    padding-top: 40px;
+}
+
+.prodottiContainer{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.prodottiList{
+    max-width: 60%;
+}
+
+.prodottoInfo{
+    height: min-content;
+    width: 30%;
+
+    position: fixed;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+}
+
+.listItem{
+    user-select: none;
+}
+
+.labelColor{
+    color: gray;
+}
+
+.spacer{
+    display: inline-block;
+    width: 40px;
+}

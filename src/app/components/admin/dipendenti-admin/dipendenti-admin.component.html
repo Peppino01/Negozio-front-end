@@ -5,10 +5,12 @@
     <div class="listaDipendentiContainer">
         <h1 class="pageTitle">Lista dipendenti</h1>
         <mat-list>
-            <mat-list-item *ngFor="let dipendente of dipendenti" (click)="openDipendenteDettaglio(dipendente)" [ngClass]="dipendente == dettaglioDipendente ? 'dipendenteItemSelezionato' : ''" class="dipendenteItem">
-                <div mat-line>{{dipendente.nome}} {{dipendente.cognome}}</div>
+            <mat-selection-list #shoes [multiple]="false">
+                <mat-list-option *ngFor="let dipendente of dipendenti" (click)="openDipendenteDettaglio(dipendente)" [ngClass]="dipendente == dettaglioDipendente ? 'dipendenteItemSelezionato' : ''" class="dipendenteItem">
+                    <div mat-line>{{dipendente.nome}} {{dipendente.cognome}}</div>
                 <div mat-line>{{dipendente.email}}</div>
-            </mat-list-item>
+                </mat-list-option>
+            </mat-selection-list>
         </mat-list>
     </div>
 

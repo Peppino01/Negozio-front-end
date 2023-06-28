@@ -17,11 +17,11 @@ export class AdminService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = JSON.stringify(newDipendente);
     
-    return this.http.post(environment.hostname + '/admin/createDipendente', body, {headers})
+    return this.http.post(environment.hostname + '/dipendenti/create', body, {headers})
   }
 
   getAllDipendenti(): Observable<any> {
-    return this.http.get(environment.hostname + '/admin/allDipendenti')
+    return this.http.get(environment.hostname + '/dipendenti/getAll')
   }
 
 }
