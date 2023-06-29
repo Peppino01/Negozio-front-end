@@ -1,7 +1,9 @@
 import { Genere } from "../Genere"
+import { InputRecenzione } from "./InputRecenzione"
+import { InputTransazione } from "./InputTransazione"
 
 export class InputCliente {
-    id?: number
+    id: number
     nome: string
     cognome: string
     email: string
@@ -9,8 +11,11 @@ export class InputCliente {
     numTelefono: string
     dataNascita: Date
     genere: Genere
+    transazioni: InputTransazione[]
+    recenzioni: InputRecenzione[]
 
-    constructor(nome: string, cognome: string, email: string, password: string, numTelefono: string, dataNascita: Date, genere: Genere, id?: number) {
+    constructor(id: number, nome: string, cognome: string, email: string, password: string, numTelefono: string, dataNascita: Date, genere: Genere, transazioni: InputTransazione[], recenzioni: InputRecenzione[]) {
+        this.id = id
         this.nome = nome
         this.cognome = cognome
         this.email = email
@@ -18,6 +23,7 @@ export class InputCliente {
         this.numTelefono = numTelefono
         this.dataNascita = dataNascita
         this.genere = genere
-        this.id = id
+        this.transazioni = transazioni
+        this.recenzioni = recenzioni
     }
 }

@@ -1,5 +1,5 @@
 export class OutputDipendente {
-    id?: number
+    id: number
     nome: string
     cognome: string
     email: string
@@ -8,7 +8,7 @@ export class OutputDipendente {
     dataNascita: Date
     stipendio: number
 
-    constructor(nome: string, cognome: string, email: string, password: string, numTelefono: string, dataNascita: Date, stipendio: number, id?: number) {
+    constructor(id: number, nome: string, cognome: string, email: string, password: string, numTelefono: string, dataNascita: Date, stipendio: number) {
         this.id = id
         this.nome = nome
         this.cognome = cognome
