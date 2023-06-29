@@ -17,10 +17,13 @@ export class PublicApiService {
       return this.http.get(environment.hostname + "/prodotti/getAll")
     }
 
-    getProdottiInventarioDisponibili(): Observable<any> {
-      let params = new HttpParams().set('stato', StatoProdotto.DISPONIBILE)
-  
-      return this.http.get(environment.hostname + "/prodotti/inventario", { params })
+    getProdottiInventarioDisponibili(statoProdotto: StatoProdotto | null): Observable<any> {
+      if (statoProdotto != null) {
+        let params = new HttpParams().set('stato', statoProdotto)
+        return this.http.get(environment.hostname + "/prodotti/inventario", { params })
+      } else {
+        return this.http.get(environment.hostname + "/prodotti/inventario")
+      }
     }
 
 }

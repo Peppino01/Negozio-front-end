@@ -5,15 +5,17 @@ import { InputProdottoInventario } from 'src/app/shared/model/inputDTO/InputProd
 import { PublicApiService } from 'src/app/shared/services/public-api.service';
 
 @Component({
-  selector: 'app-vetrina',
-  templateUrl: './vetrina.component.html',
-  styleUrls: ['./vetrina.component.scss']
+  selector: 'app-inventario-dipendente',
+  templateUrl: './inventario-dipendente.component.html',
+  styleUrls: ['./inventario-dipendente.component.scss']
 })
-export class VetrinaComponent implements OnInit {
+export class InventarioDipendenteComponent implements OnInit {
 
   linkedPages: Page[] = [
-    { title: 'Accedi', url: 'login' },
-    { title: 'Registrati', url: 'signin' }
+    { title: 'Home', url: 'dipendente/home' },
+    { title: 'Prodotti', url: 'dipendente/prodotti' },
+    { title: 'Inventario', url: 'dipendente/inventario' },
+    { title: 'Profilo', url: 'dipendente/profilo' }
   ];
 
   prodotti: InputProdottoInventario[] = []

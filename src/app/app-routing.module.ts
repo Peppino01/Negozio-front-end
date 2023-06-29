@@ -14,6 +14,7 @@ import { ProfiloDipendenteComponent } from './components/dipendente/profilo-dipe
 import { ProdottiClienteComponent } from './components/cliente/prodotti-cliente/prodotti-cliente.component';
 import { ProfiloClienteComponent } from './components/cliente/profilo-cliente/profilo-cliente.component';
 import { HomeClienteComponent } from './components/cliente/home-cliente/home-cliente.component';
+import { InventarioDipendenteComponent } from './components/dipendente/inventario-dipendente/inventario-dipendente.component';
 
 const routes: Routes = [
 
@@ -32,6 +33,7 @@ const routes: Routes = [
   // dipendenti
   { path: 'dipendente/home', component: HomeDipendenteComponent },
   { path: 'dipendente/prodotti', component: ProdottiDipendenteComponent },
+  { path: 'dipendente/inventario', component: InventarioDipendenteComponent },
   { path: 'dipendente/profilo', component: ProfiloDipendenteComponent },
 
   // clienti

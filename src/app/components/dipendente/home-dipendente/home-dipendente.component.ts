@@ -11,6 +11,7 @@ export class HomeDipendenteComponent implements OnInit {
   linkedPages: Page[] = [
     { title: 'Home', url: 'dipendente/home' },
     { title: 'Prodotti', url: 'dipendente/prodotti' },
+    { title: 'Inventario', url: 'dipendente/inventario' },
     { title: 'Profilo', url: 'dipendente/profilo' }
   ];
 

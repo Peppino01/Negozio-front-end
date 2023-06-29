@@ -32,7 +32,7 @@ export class SigninComponent implements OnInit {
       numTelefono: ['3471579668'],
       dataNascita: ['2001-07-31'],
       genere: [Genere.MASCHIO]
-    });
+    })
   }
 
   ngOnInit(): void {

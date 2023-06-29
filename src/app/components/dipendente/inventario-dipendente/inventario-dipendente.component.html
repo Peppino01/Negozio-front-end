@@ -1,0 +1,43 @@
+<app-toolbar [pages]="linkedPages" title="Dipendente"></app-toolbar>
+
+<div *ngIf="prodotti.length > 0; else noProdotti" class="pageContainer">
+
+    <div class="prodottiContainer">
+
+        <mat-selection-list class="prodottiList" [multiple]="false">
+            <h1>Prodotti disponibili</h1>
+            <mat-list-option class="listItem" *ngFor="let prodotto of prodotti" [selected]="prodottoSelezionato == prodotto" (click)="selezionaProdotto(prodotto)">
+                <div mat-line>{{prodotto.nome}}</div>
+                <div mat-line>
+                    <label class="labelColor" for="prezzo">Prezzo: </label>
+                    <span id="prezzo">{{prodotto.prezzo}}$</span>
+                    <span class="spacer"></span>
+                    <label class="labelColor" for="prezzo">Quantità: </label>
+                    <span id="prezzo">{{prodotto.quantita}}</span>
+                </div>
+            </mat-list-option>
+        </mat-selection-list>
+
+        <mat-card *ngIf="prodottoSelezionato != null" class="prodottoInfo">
+            <mat-card-header>
+                <i mat-card-avatar class="material-icons">search</i>
+                <mat-card-title>{{prodottoSelezionato.nome}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{prodottoSelezionato.descrizione}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+            </mat-card-actions>
+          </mat-card>
+
+    </div>
+
+</div>
+
+<ng-template #noProdotti>
+    <div class="pageContainer">
+        <p>Al momento non ci sono prodotti disponibili</p>
+    </div>
+</ng-template>
