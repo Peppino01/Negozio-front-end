@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Page } from 'src/app/shared/model/Page';
-import { InputProdotto } from 'src/app/shared/model/inputDTO/InputProdotto';
+import { InputProdottoInventario } from 'src/app/shared/model/inputDTO/InputProdottoInventario';
 import { PublicApiService } from 'src/app/shared/services/public-api.service';
 
 @Component({
@@ -15,16 +15,16 @@ export class VetrinaComponent implements OnInit {
     { title: 'Registrati', url: 'signin' }
   ];
 
-  prodotti: InputProdotto[] = []
-  prodottoSelezionato: InputProdotto | null = null
+  prodotti: InputProdottoInventario[] = []
+  prodottoSelezionato: InputProdottoInventario | null = null
 
   constructor(
     private publicAi: PublicApiService
   ) { }
 
   ngOnInit(): void {
-    this.publicAi.getAllProdotti().subscribe(
-      (res: InputProdotto[]) => {
+    this.publicAi.getProdottiInventarioDisponibili().subscribe(
+      (res: InputProdottoInventario[]) => {
         this.prodotti = res
       },
       (responseError) => {
@@ -33,7 +33,7 @@ export class VetrinaComponent implements OnInit {
     )
   }
 
-  selezionaProdotto(prodotto: InputProdotto): void {
+  selezionaProdotto(prodotto: InputProdottoInventario): void {
     if(prodotto == this.prodottoSelezionato) {
       this.prodottoSelezionato = null
     } else if(prodotto) {

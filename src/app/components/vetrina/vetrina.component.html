@@ -5,13 +5,15 @@
     <div class="prodottiContainer">
 
         <mat-selection-list class="prodottiList" [multiple]="false">
-            <h1>Lista dei prodotti disponibili</h1>
+            <h1>Prodotti disponibili</h1>
             <mat-list-option class="listItem" *ngFor="let prodotto of prodotti" [selected]="prodottoSelezionato == prodotto" (click)="selezionaProdotto(prodotto)">
                 <div mat-line>{{prodotto.nome}}</div>
                 <div mat-line>
                     <label class="labelColor" for="prezzo">Prezzo: </label>
                     <span id="prezzo">{{prodotto.prezzo}}$</span>
                     <span class="spacer"></span>
+                    <label class="labelColor" for="prezzo">Quantità: </label>
+                    <span id="prezzo">{{prodotto.quantita}}</span>
                 </div>
             </mat-list-option>
         </mat-selection-list>

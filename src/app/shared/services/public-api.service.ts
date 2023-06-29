@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { StatoProdotto } from '../model/StatoProdotto';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,12 @@ export class PublicApiService {
 
     getAllProdotti(): Observable<any> {
       return this.http.get(environment.hostname + "/prodotti/getAll")
+    }
+
+    getProdottiInventarioDisponibili(): Observable<any> {
+      let params = new HttpParams().set('stato', StatoProdotto.DISPONIBILE)
+  
+      return this.http.get(environment.hostname + "/prodotti/inventario", { params })
     }
 
 }
