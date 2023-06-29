@@ -12,8 +12,6 @@
                     <label class="labelColor" for="prezzo">Prezzo: </label>
                     <span id="prezzo">{{prodotto.prezzo}}$</span>
                     <span class="spacer"></span>
-                    <label class="labelColor" for="prezzo">Disponibili: </label>
-                    <span id="prezzo">{{prodotto.quantita}}</span>
                 </div>
             </mat-list-option>
         </mat-selection-list>
@@ -22,7 +20,6 @@
             <mat-card-header>
                 <i mat-card-avatar class="material-icons">search</i>
                 <mat-card-title>{{prodottoSelezionato.nome}}</mat-card-title>
-                <mat-card-subtitle>{{prodottoSelezionato.stato}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
               <p>{{prodottoSelezionato.descrizione}}</p>
@@ -33,8 +30,8 @@
 
 </div>
 
-<ng-template #noProdotti class="pageContainer">
-
-    <p>Al momento non ci sono prodotti disponibili</p>
-
+<ng-template #noProdotti>
+    <div class="pageContainer">
+        <p>Al momento non ci sono prodotti disponibili</p>
+    </div>
 </ng-template>

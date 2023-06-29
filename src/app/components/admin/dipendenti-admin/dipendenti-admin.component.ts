@@ -49,14 +49,14 @@ export class DipendentiAdminComponent implements OnInit {
         res.forEach(
           d => {
             this.dipendenti.push(new InputDipendente(
+              d.id,
               d.nome,
               d.cognome,
               d.email,
               d.password,
               d.numTelefono,
               d.dataNascita,
-              d.stipendio,
-              d.id
+              d.stipendio
             ))
           }
         )

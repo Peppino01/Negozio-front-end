@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Page } from 'src/app/shared/model/Page';
 
 @Component({
   selector: 'app-home-dipendente',
@@ -6,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-dipendente.component.scss']
 })
 export class HomeDipendenteComponent implements OnInit {
+
+  linkedPages: Page[] = [
+    { title: 'Home', url: 'dipendente/home' },
+    { title: 'Prodotti', url: 'dipendente/prodotti' },
+    { title: 'Profilo', url: 'dipendente/profilo' }
+  ];
 
   constructor() { }
 
