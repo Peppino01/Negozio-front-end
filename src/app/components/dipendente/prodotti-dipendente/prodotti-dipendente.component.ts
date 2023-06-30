@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Page } from 'src/app/shared/model/Page';
 import { InputProdotto } from 'src/app/shared/model/inputDTO/InputProdotto';
+import { OutputInventario } from 'src/app/shared/model/outputDTO/OutputInventario';
+import { AdminService } from 'src/app/shared/services/admin.service';
 import { PublicApiService } from 'src/app/shared/services/public-api.service';
 
 @Component({
@@ -29,7 +33,9 @@ export class ProdottiDipendenteComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private publicAi: PublicApiService
+    private publicAi: PublicApiService,
+    private adminService: AdminService,
+    private matSnackBar: MatSnackBar
   ) {
     this.prodottoForm = this.formBuilder.group({
       nome: ['', Validators.required],
@@ -38,8 +44,8 @@ export class ProdottiDipendenteComponent implements OnInit {
     })
     this.inventarioForm = this.formBuilder.group({
       disponibile: ['', Validators.required],
-      nonDisponibile: ['', Validators.required],
-      inPromozione: ['', Validators.required],
+      non_disponibile: ['', Validators.required],
+      in_promozione: ['', Validators.required],
       venduto: ['', Validators.required]
     })
   }
@@ -48,8 +54,6 @@ export class ProdottiDipendenteComponent implements OnInit {
     this.publicAi.getAllProdotti().subscribe(
       (res: InputProdotto[]) => {
         this.prodotti = res
-        console.log(this.prodotti);
-        
       },
       (responseError) => {
         console.log(responseError);
@@ -65,8 +69,8 @@ export class ProdottiDipendenteComponent implements OnInit {
 
       // cambio i valori del form con quelli del nuovo prodotto selezionato
       this.inventarioForm.get('disponibile')?.setValue(this.prodottoSelezionato.inventario[0].quantita)
-      this.inventarioForm.get('nonDisponibile')?.setValue(this.prodottoSelezionato.inventario[1].quantita)
-      this.inventarioForm.get('inPromozione')?.setValue(this.prodottoSelezionato.inventario[2].quantita)
+      this.inventarioForm.get('non_disponibile')?.setValue(this.prodottoSelezionato.inventario[1].quantita)
+      this.inventarioForm.get('in_promozione')?.setValue(this.prodottoSelezionato.inventario[2].quantita)
       this.inventarioForm.get('venduto')?.setValue(this.prodottoSelezionato.inventario[3].quantita)
 
       // imposto i controls del form come non toccati e non modificati
@@ -86,7 +90,31 @@ export class ProdottiDipendenteComponent implements OnInit {
   }
 
   salvaInventarioProdotto(): void {
-    
+    let outInventario: OutputInventario[] = []
+
+    // creo la lista di inventari da mandare al backend a partire dall'inventario del prodotto selezionato con la quantità di inventarioForm
+    this.prodottoSelezionato?.inventario.forEach(inventario => {
+      outInventario.push(new OutputInventario(
+        inventario.id,
+        this.inventarioForm.get(inventario.stato.toString().toLowerCase())?.value,
+        inventario.stato
+      ))
+    });
+
+    console.log(outInventario);
+
+    this.adminService.updateInventarioProdotto(outInventario).subscribe(
+      (res: string) => {
+        this.matSnackBar.open("Inventario prodotto aggiurnato correttamente")
+        // imposto i controls del form come non toccati e non modificati
+        this.inventarioForm.markAsPristine();
+        this.inventarioForm.markAsUntouched();
+      },
+      (responseError) => {
+        this.matSnackBar.open(responseError.error)
+        console.log(responseError);
+      }
+    )
   }
 
 }

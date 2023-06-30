@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { OutputDipendente } from '../model/outputDTO/OutputDipendente';
+import { OutputInventario } from '../model/outputDTO/OutputInventario';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,10 @@ export class AdminService {
 
   getAllDipendenti(): Observable<any> {
     return this.http.get(environment.hostname + '/dipendenti/getAll')
+  }
+
+  updateInventarioProdotto(outputInventario: OutputInventario[]): Observable<any> {
+    return this.http.put(environment.hostname + '/inventario/update', outputInventario)
   }
 
 }
