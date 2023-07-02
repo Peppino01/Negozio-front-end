@@ -22,6 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { LoginComponent } from './components/login/login.component';
 import { SigninComponent } from './components/signin/signin.component';
@@ -39,6 +40,7 @@ import { DipendentiAdminComponent } from './components/admin/dipendenti-admin/di
 import { ProdottiAdminComponent } from './components/admin/prodotti-admin/prodotti-admin.component';
 import { RegistroAdminComponent } from './components/admin/registro-admin/registro-admin.component';
 import { InventarioDipendenteComponent } from './components/dipendente/inventario-dipendente/inventario-dipendente.component';
+import { SaveProdottoDialog } from './components/dipendente/prodotti-dipendente/save-prodotto';
 
 
 
@@ -61,7 +63,8 @@ import { InventarioDipendenteComponent } from './components/dipendente/inventari
     DipendentiAdminComponent,
     ProdottiAdminComponent,
     RegistroAdminComponent,
-    InventarioDipendenteComponent
+    InventarioDipendenteComponent,
+    SaveProdottoDialog
   ],
   imports: [
     BrowserModule,
@@ -81,7 +84,8 @@ import { InventarioDipendenteComponent } from './components/dipendente/inventari
     MatIconModule,
     MatListModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [
     {

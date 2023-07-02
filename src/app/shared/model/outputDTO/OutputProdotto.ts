@@ -5,7 +5,6 @@ import { OutputVendita } from "./OutputVendita"
 
 
 export class OutputProdotto {
-    id: number
     nome: string
     prezzo: number
     descrizione: string
@@ -13,8 +12,7 @@ export class OutputProdotto {
     recenzioni: OutputRecenzione[]
     inventario: OutputInventario[]
 
-    constructor(id: number, nome: string, prezzo: number, descrizione: string, vendite: OutputVendita[], recenzioni: OutputRecenzione[], inventario: OutputInventario[]) {
-        this.id = id
+    constructor(nome: string, prezzo: number, descrizione: string, vendite: OutputVendita[], recenzioni: OutputRecenzione[], inventario: OutputInventario[]) {
         this.nome = nome
         this.prezzo = prezzo
         this.descrizione = descrizione

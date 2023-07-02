@@ -1,0 +1,29 @@
+<h1 *ngIf="prodotto == null; else modifica" mat-dialog-title>Crea un nuovo prodotto</h1>
+<ng-template  #modifica>
+  <h1 mat-dialog-title>Modifica prodotto</h1>
+</ng-template>
+
+<form [formGroup]="saveProdottoForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input type="text" matInput placeholder="Nome" formControlName="nome" required>
+    <mat-error *ngIf="saveProdottoForm.controls['nome'].hasError('required')">Campo obbligatorio</mat-error>
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill">
+    <mat-label>Prezzo</mat-label>
+    <input type="number" matInput placeholder="Prezzo" formControlName="prezzo" required>
+    <mat-error *ngIf="saveProdottoForm.controls['prezzo'].hasError('required')">Campo obbligatorio</mat-error>
+    <mat-error *ngIf="saveProdottoForm.controls['prezzo'].hasError('min')">Il prezzo non può essere negativo</mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Descrizione</mat-label>
+    <textarea matInput placeholder="Email" formControlName="descrizione" cols="30" rows="5"></textarea>
+  </mat-form-field>
+</form>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Anulla</button>
+  <button mat-button [disabled]="saveProdottoForm.invalid" color="primary" (click)="saveProdotto()">Salva</button>
+</div>
