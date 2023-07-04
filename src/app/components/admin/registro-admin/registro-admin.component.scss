@@ -2,13 +2,54 @@
     padding: 20px;
 }
 
+.registroContainer{
+}
+
 .listContainer{
-    width: 30%;
+    width: 40%;
 }
 .lineContainer{
     display: flex;
     justify-content: space-between;
 }
+
+.detailContainer{
+    height: min-content;
+    width: 40%;
+
+    position: fixed;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+
+    display: flex;
+    gap: 10px;
+}
+
+
+.detailListLabel{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+
+    color: gray;
+}
+.detailListLabel label{
+    height: 50px;
+}
+.detailListValue{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.detailListValue span{
+    height: 50px;
+}
+
 
 h1{
     margin-left: 16px;
@@ -26,6 +67,7 @@ h1{
     color: gray;
     font-style: italic;
     padding-right: 5px;
+    font-size: small;
 }
 
 /* prezzo totale */

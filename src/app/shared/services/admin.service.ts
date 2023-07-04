@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { OutputDipendente } from '../model/outputDTO/OutputDipendente';
@@ -39,6 +39,13 @@ export class AdminService {
 
   getTransazioniSummary(): Observable<any> {
     return this.http.get(environment.hostname + '/transzioni/summary')
+  }
+
+  getTransazioneInfo(idTransazione: number): Observable<any> {
+    const params = new HttpParams()
+      .set('id', idTransazione.toString());
+
+    return this.http.get(environment.hostname + '/transzioni/info', { params })
   }
 
 }

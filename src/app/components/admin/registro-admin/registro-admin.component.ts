@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Page } from 'src/app/shared/model/Page';
+import { InputTransazioneDetail } from 'src/app/shared/model/inputDTO/InputTransazioneDetail';
 import { InputTransazioneSummary } from 'src/app/shared/model/inputDTO/InputTransazioneSummary';
 import { AdminService } from 'src/app/shared/services/admin.service';
 
@@ -19,6 +20,7 @@ export class RegistroAdminComponent implements OnInit {
   ];
 
   transazioniSummary: InputTransazioneSummary[] = []
+  transazioneSelezionata: InputTransazioneDetail | null = null
 
   constructor(
     private adminService: AdminService
@@ -34,6 +36,23 @@ export class RegistroAdminComponent implements OnInit {
         console.log(responseError)
       }
     )
+  }
+
+  selezionaTransazione(idTransazione: number): void {
+    if(idTransazione == this.transazioneSelezionata?.id) {
+      this.transazioneSelezionata = null
+    } else {
+      this.adminService.getTransazioneInfo(idTransazione).subscribe(
+        (res: InputTransazioneDetail) => {
+          this.transazioneSelezionata = res
+          console.log(this.transazioneSelezionata)
+        },
+        (responseError: HttpErrorResponse) => {
+          console.log(responseError)
+        }
+      )
+    }
+    
   }
 
 }

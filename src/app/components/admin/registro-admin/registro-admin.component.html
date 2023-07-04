@@ -4,9 +4,9 @@
 
     <h1>Registro transazioni</h1>
 
-    <div *ngIf="transazioniSummary.length > 0; else noTransazioni" class="listContainer">
-        <mat-selection-list [multiple]="false">
-            <mat-list-option *ngFor="let transazione of transazioniSummary">
+    <div *ngIf="transazioniSummary.length > 0; else noTransazioni" class="registroContainer">
+        <mat-selection-list class="listContainer" [multiple]="false">
+            <mat-list-option *ngFor="let transazione of transazioniSummary" [selected]="transazione.id == transazioneSelezionata?.id" (click)="selezionaTransazione(transazione.id)">
                 <div mat-line>
                     <div class="lineContainer">
                         <span class="tipo">{{transazione.tipo}}</span>
@@ -21,6 +21,24 @@
                 </div>
             </mat-list-option>
         </mat-selection-list>
+
+        <mat-card class="detailContainer" *ngIf="transazioneSelezionata != null">
+            <div class="detailListLabel">
+                <label>Tipologia</label>
+                <label>Data</label>
+                <label>Totale</label>
+                <label>Info</label>
+                <label *ngIf="transazioneSelezionata.cliente != null">Cliente</label>
+            </div>
+            <div class="detailListValue">
+                <span>{{transazioneSelezionata.tipo}}</span>
+                <span>{{transazioneSelezionata.data}}</span>
+                <span>{{transazioneSelezionata.prezzoTotale}}€</span>
+                <span>{{transazioneSelezionata.info}}</span>
+                <span *ngIf="transazioneSelezionata.cliente != null">{{transazioneSelezionata.cliente.cognome}} {{transazioneSelezionata.cliente.nome}}</span>
+            </div>
+        </mat-card>
+        
     </div>
 
     <ng-template #noTransazioni>
