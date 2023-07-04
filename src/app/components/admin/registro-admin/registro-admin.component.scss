@@ -1,0 +1,57 @@
+.pageContainer{
+    padding: 20px;
+}
+
+.listContainer{
+    width: 40%;
+}
+.lineContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+h1{
+    margin-left: 16px;
+}
+
+
+
+/* tipo */
+.tipo{
+    color: gray;
+}
+
+/* data */
+.data{
+    color: gray;
+    font-style: italic;
+    padding-right: 5px;
+}
+
+/* info */
+.info{
+    max-width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* prezzo totale */
+.prezzoTotale {
+    font-weight: bold;
+    font-size: 20px;
+    padding-right: 5px;
+}
+.prezzoTotalePositivo {
+    @extend .prezzoTotale;
+    color: green;
+}
+.prezzoTotaleNegativo {
+    @extend .prezzoTotale;
+    color: red;
+}
+
+
+
+.noTransazioni{
+    margin: 16px;
+}

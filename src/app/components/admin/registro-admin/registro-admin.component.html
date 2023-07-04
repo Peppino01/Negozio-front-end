@@ -1,3 +1,33 @@
-<app-toolbar [pages]="linkedPages" title="Amministrazione"></app-toolbar>
+<app-toolbar [pages]="linkedPages" title="Proprietario"></app-toolbar>
 
-<p>registro-admin works!</p>
+<div class="pageContainer">
+
+    <h1>Registro transazioni</h1>
+
+    <div *ngIf="transazioniSummary.length > 0; else noTransazioni" class="listContainer">
+        <mat-selection-list [multiple]="false">
+            <mat-list-option *ngFor="let transazione of transazioniSummary">
+                <div mat-line>
+                    <div class="lineContainer">
+                        <span class="tipo">{{transazione.tipo}}</span>
+                        <span class="data">{{transazione.data}}</span>
+                    </div>
+                </div>
+                <div mat-line>
+                    <div class="lineContainer">
+                        <span class="info">{{transazione.info}}</span>
+                        <span [ngClass]="transazione.prezzoTotale > 0 ? 'prezzoTotalePositivo' : 'prezzoTotaleNegativo'"><span *ngIf="transazione.prezzoTotale > 0">+</span>{{transazione.prezzoTotale}}</span>
+                    </div>
+                </div>
+            </mat-list-option>
+        </mat-selection-list>
+    </div>
+
+    <ng-template #noTransazioni>
+        <p class="noTransazioni">Non è presente nessuna transazione</p>
+    </ng-template>
+
+</div>
+
+
+

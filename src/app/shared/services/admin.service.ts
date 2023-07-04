@@ -37,4 +37,8 @@ export class AdminService {
     return this.http.post(environment.hostname + '/prodotti/save', body, {headers})
   }
 
+  getTransazioniSummary(): Observable<any> {
+    return this.http.get(environment.hostname + '/transzioni/summary')
+  }
+
 }
