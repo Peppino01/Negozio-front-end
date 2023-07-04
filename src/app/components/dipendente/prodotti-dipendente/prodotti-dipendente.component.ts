@@ -38,8 +38,7 @@ export class ProdottiDipendenteComponent implements OnInit {
     private publicAi: PublicApiService,
     private adminService: AdminService,
     private matSnackBar: MatSnackBar,
-    public dialog: MatDialog,
-    private router: Router
+    public dialog: MatDialog
   ) {
     this.prodottoForm = this.formBuilder.group({
       nome: ['', Validators.required],

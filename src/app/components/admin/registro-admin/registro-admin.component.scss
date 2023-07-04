@@ -3,7 +3,7 @@
 }
 
 .listContainer{
-    width: 40%;
+    width: 30%;
 }
 .lineContainer{
     display: flex;
@@ -26,13 +26,6 @@ h1{
     color: gray;
     font-style: italic;
     padding-right: 5px;
-}
-
-/* info */
-.info{
-    max-width: 70%;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 /* prezzo totale */

@@ -3,13 +3,11 @@ export class InputTransazioneSummary {
     data: Date
     tipo: string
     prezzoTotale: number
-    info: string
 
-    constructor(id: number, data: Date, tipo: string, prezzoTotale: number, info: string) {
+    constructor(id: number, data: Date, tipo: string, prezzoTotale: number) {
         this.id = id
         this.data = data
         this.tipo = tipo
         this.prezzoTotale = prezzoTotale
-        this.info = info
     }
 }
