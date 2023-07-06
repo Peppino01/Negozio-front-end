@@ -13,7 +13,7 @@
     justify-content: space-between;
 }
 
-.detailContainer{
+.detailCard{
     height: min-content;
     width: 40%;
 
@@ -21,7 +21,8 @@
     top: 50%;
     right: 10%;
     transform: translateY(-50%);
-
+}
+.detailContainer{
     display: flex;
     gap: 10px;
 }
@@ -51,6 +52,10 @@
 }
 
 
+.subHeader{
+    display: flex;
+    justify-content: space-between;
+}
 h1{
     margin-left: 16px;
 }

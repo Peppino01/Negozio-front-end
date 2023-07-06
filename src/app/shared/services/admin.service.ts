@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { OutputDipendente } from '../model/outputDTO/OutputDipendente';
 import { OutputInventario } from '../model/outputDTO/OutputInventario';
 import { OutputProdotto } from '../model/outputDTO/OutputProdotto';
+import { OutputTransazione } from '../model/outputDTO/OutputTransazione';
 
 @Injectable({
   providedIn: 'root'
@@ -38,14 +39,21 @@ export class AdminService {
   }
 
   getTransazioniSummary(): Observable<any> {
-    return this.http.get(environment.hostname + '/transzioni/summary')
+    return this.http.get(environment.hostname + '/transazioni/summary')
   }
 
   getTransazioneInfo(idTransazione: number): Observable<any> {
     const params = new HttpParams()
       .set('id', idTransazione.toString());
 
-    return this.http.get(environment.hostname + '/transzioni/info', { params })
+    return this.http.get(environment.hostname + '/transazioni/info', { params })
+  }
+
+  insertNewTransazione(transazione: OutputTransazione): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
+    const body = JSON.stringify(transazione)
+    
+    return this.http.post(environment.hostname + '/transazioni/insert', body, {headers})
   }
 
 }

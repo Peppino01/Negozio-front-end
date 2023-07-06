@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Inserisci una nuova transazione</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="nuovaTransazioneForm">
+    <mat-form-field style="width: 340px;" appearance="fill">
+      <mat-label>Data</mat-label>
+      <input matInput formControlName="data" [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="nuovaTransazioneForm.controls['data'].hasError('required')">Campo obbligatorio</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field style="width: 340px;" appearance="fill">
+      <mat-label>Tipologia</mat-label>
+      <input matInput formControlName="tipo" required>
+      <mat-error *ngIf="nuovaTransazioneForm.controls['tipo'].hasError('required')">Campo obbligatorio</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field style="width: 340px;" appearance="fill">
+      <mat-label>Importo (€)</mat-label>
+      <input type="number" matInput formControlName="prezzo" required>
+      <mat-error *ngIf="nuovaTransazioneForm.controls['prezzo'].hasError('required')">Campo obbligatorio</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field style="width: 340px;" appearance="fill">
+      <mat-label>Info</mat-label>
+      <textarea matInput formControlName="info" cols="30" rows="10"></textarea>
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Anulla</button>
+  <button mat-button [disabled]="nuovaTransazioneForm.invalid" color="primary" (click)="saveProdotto()">Salva</button>
+</div>

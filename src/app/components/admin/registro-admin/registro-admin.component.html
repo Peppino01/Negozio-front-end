@@ -2,7 +2,10 @@
 
 <div class="pageContainer">
 
-    <h1>Registro transazioni</h1>
+    <div class="subHeader">
+        <h1>Registro transazioni</h1>
+        <button (click)="openDialog()" mat-raised-button color="primary">Nuova transazione</button>
+    </div>
 
     <div *ngIf="transazioniSummary.length > 0; else noTransazioni" class="registroContainer">
         <mat-selection-list class="listContainer" [multiple]="false">
@@ -22,20 +25,25 @@
             </mat-list-option>
         </mat-selection-list>
 
-        <mat-card class="detailContainer" *ngIf="transazioneSelezionata != null">
-            <div class="detailListLabel">
-                <label>Tipologia</label>
-                <label>Data</label>
-                <label>Totale</label>
-                <label>Info</label>
-                <label *ngIf="transazioneSelezionata.cliente != null">Cliente</label>
-            </div>
-            <div class="detailListValue">
-                <span>{{transazioneSelezionata.tipo}}</span>
-                <span>{{transazioneSelezionata.data}}</span>
-                <span>{{transazioneSelezionata.prezzoTotale}}€</span>
-                <span>{{transazioneSelezionata.info}}</span>
-                <span *ngIf="transazioneSelezionata.cliente != null">{{transazioneSelezionata.cliente.cognome}} {{transazioneSelezionata.cliente.nome}}</span>
+        <mat-card class="detailCard" *ngIf="transazioneSelezionata != null">
+            <mat-card-header>
+                <mat-card-title>Dettagli</mat-card-title>
+            </mat-card-header>
+            <div class="detailContainer">
+                <div class="detailListLabel">
+                    <label>Tipologia</label>
+                    <label>Data</label>
+                    <label>Totale</label>
+                    <label>Info</label>
+                    <label *ngIf="transazioneSelezionata.cliente != null">Cliente</label>
+                </div>
+                <div class="detailListValue">
+                    <span>{{transazioneSelezionata.tipo}}</span>
+                    <span>{{transazioneSelezionata.data}}</span>
+                    <span>{{transazioneSelezionata.prezzoTotale}}€</span>
+                    <span>{{transazioneSelezionata.info}}</span>
+                    <span *ngIf="transazioneSelezionata.cliente != null">{{transazioneSelezionata.cliente.cognome}} {{transazioneSelezionata.cliente.nome}}</span>
+                </div>
             </div>
         </mat-card>
         
