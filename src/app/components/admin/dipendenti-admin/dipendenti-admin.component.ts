@@ -17,7 +17,8 @@ export class DipendentiAdminComponent implements OnInit {
     { title: 'Home', url: 'admin/home' },
     { title: 'Gestione dipendenti', url: 'admin/dipendenti' },
     { title: 'Gestione prodotti', url: 'admin/prodotti' },
-    { title: 'Registro', url: 'admin/registro' }
+    { title: 'Registro', url: 'admin/registro' },
+    { title: 'Esci', url: 'login' }
   ];
 
   errorMessage: string = ""

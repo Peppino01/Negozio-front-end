@@ -11,7 +11,8 @@ export class ProfiloClienteComponent implements OnInit {
   linkedPages: Page[] = [
     { title: 'Home', url: 'cliente/home' },
     { title: 'Prodotti', url: 'cliente/prodotti' },
-    { title: 'Profilo', url: 'cliente/profilo' }
+    { title: 'Profilo', url: 'cliente/profilo' },
+    { title: 'Esci', url: 'login' }
   ];
 
   constructor() { }
