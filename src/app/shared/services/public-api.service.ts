@@ -17,7 +17,7 @@ export class PublicApiService {
       return this.http.get(environment.hostname + "/prodotti/getAll")
     }
 
-    getProdottiInventarioDisponibili(statoProdotto: StatoProdotto | null): Observable<any> {
+    getInventarioProdotti(statoProdotto: StatoProdotto | null): Observable<any> {
       if (statoProdotto != null) {
         let params = new HttpParams().set('stato', statoProdotto)
         return this.http.get(environment.hostname + "/prodotti/inventario", { params })

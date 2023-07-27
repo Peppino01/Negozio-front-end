@@ -23,6 +23,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { LoginComponent } from './components/login/login.component';
 import { SigninComponent } from './components/signin/signin.component';
@@ -42,6 +43,7 @@ import { RegistroAdminComponent } from './components/admin/registro-admin/regist
 import { InventarioDipendenteComponent } from './components/dipendente/inventario-dipendente/inventario-dipendente.component';
 import { SaveProdottoDialog } from './components/dipendente/prodotti-dipendente/save-prodotto';
 import { DialogOverviewExampleDialog } from './components/admin/registro-admin/newTransazioneDialog';
+import { CarrelloComponent } from './components/cliente/carrello/carrello.component';
 
 
 
@@ -66,7 +68,8 @@ import { DialogOverviewExampleDialog } from './components/admin/registro-admin/n
     RegistroAdminComponent,
     InventarioDipendenteComponent,
     SaveProdottoDialog,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    CarrelloComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +90,8 @@ import { DialogOverviewExampleDialog } from './components/admin/registro-admin/n
     MatListModule,
     MatDividerModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule
   ],
   providers: [
     {

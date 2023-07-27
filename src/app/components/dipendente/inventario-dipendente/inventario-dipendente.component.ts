@@ -27,7 +27,7 @@ export class InventarioDipendenteComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.publicAi.getProdottiInventarioDisponibili(StatoProdotto.DISPONIBILE).subscribe(
+    this.publicAi.getInventarioProdotti(StatoProdotto.DISPONIBILE).subscribe(
       (res: InputProdottoInventario[]) => {
         this.prodotti = res
       },

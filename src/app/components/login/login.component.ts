@@ -19,14 +19,16 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup
 
+  ricordami: boolean = false
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService
   ) {
     this.loginForm = this.formBuilder.group({
-      email: ['g.filippi@mail.com', [Validators.required, Validators.email]],
-      password: ['01928374', [Validators.required, Validators.minLength(8)]]
+      email: ['luca.verdi@example.com', [Validators.required, Validators.email]],
+      password: ['password789', [Validators.required, Validators.minLength(8)]]
     });
   }
 
@@ -38,6 +40,15 @@ export class LoginComponent implements OnInit {
     
     this.authService.login(outputLogin).subscribe(
       (res: InputLogin) => {
+
+        if (this.ricordami) {
+          localStorage.setItem('email', this.loginForm.get("email")?.value)
+          localStorage.setItem('password', this.loginForm.get("password")?.value)
+        } else {
+          sessionStorage.setItem('email', this.loginForm.get("email")?.value)
+          sessionStorage.setItem('password', this.loginForm.get("password")?.value)
+        }
+
         switch (res.ruolo) {
           case Ruolo.CLIENTE:
             this.router.navigateByUrl('/cliente/home')

@@ -12,6 +12,7 @@ export class ProfiloClienteComponent implements OnInit {
     { title: 'Home', url: 'cliente/home' },
     { title: 'Prodotti', url: 'cliente/prodotti' },
     { title: 'Profilo', url: 'cliente/profilo' },
+    { title: 'Carrello', url: 'cliente/carrello' },
     { title: 'Esci', url: 'login' }
   ];
 

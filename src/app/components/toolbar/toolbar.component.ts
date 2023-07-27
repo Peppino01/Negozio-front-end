@@ -18,6 +18,10 @@ export class ToolbarComponent {
   ) { }
 
   navigate(page: Page) {
+    if (page.title == 'Esci') {
+      sessionStorage.clear()
+      localStorage.clear()
+    }
     this.router.navigateByUrl(page.url)
   }
 

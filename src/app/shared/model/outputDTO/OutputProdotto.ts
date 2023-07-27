@@ -1,4 +1,3 @@
-import { StatoProdotto } from "../StatoProdotto"
 import { OutputInventario } from "./OutputInventario"
 import { OutputRecenzione } from "./OutputRecenzione"
 import { OutputVendita } from "./OutputVendita"

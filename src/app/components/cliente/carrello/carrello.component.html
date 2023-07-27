@@ -1,21 +1,26 @@
 <app-toolbar [pages]="linkedPages" title="Cliente"></app-toolbar>
 
-<div *ngIf="prodottiDisponibili.length > 0; else noProdotti" class="pageContainer">
+<div *ngIf="carrello.length > 0; else noProdotti" class="pageContainer">
 
     <div class="prodottiContainer">
 
         <mat-selection-list class="prodottiList" [multiple]="false">
-            <h1>Prodotti disponibili</h1>
-            <mat-list-option class="listItem" *ngFor="let prodotto of prodottiDisponibili" [selected]="prodottoSelezionato == prodotto" (click)="selezionaProdotto(prodotto)">
+            <h1>Questo è il tuo carrello</h1>
+            <mat-list-option class="listItem" *ngFor="let prodotto of carrello" [selected]="prodottoSelezionato == prodotto" (click)="selezionaProdotto(prodotto)">
                 <div mat-line>{{prodotto.nome}}</div>
                 <div mat-line>
                     <label class="labelColor" for="prezzo">Prezzo: </label>
                     <span id="prezzo">{{prodotto.prezzo}}$</span>
                     <span class="spacer"></span>
-                    <label class="labelColor" for="prezzo">Disponibili: </label>
+                    <label class="labelColor" for="prezzo">Quantità: </label>
                     <span id="prezzo">{{prodotto.quantita}}</span>
                 </div>
             </mat-list-option>
+            <div style="margin-top: 60px;">
+                <label class="labelColor">Totale: </label>{{prezzoTotale}}$
+            </div>
+            <br>
+            <button mat-raised-button color="primary" (click)="acquista()">Acquista carrello</button>
         </mat-selection-list>
 
         <mat-card *ngIf="prodottoSelezionato != null" class="prodottoInfo">
@@ -27,14 +32,6 @@
               <p>{{prodottoSelezionato.descrizione}}</p>
             </mat-card-content>
             <mat-card-actions>
-                <div style="display: flex; align-items: center;">
-                    <div style="width: 160px;"><button [disabled]="quantita<1 || quantita>prodottoSelezionato.quantita" (click)="aggiungiAlCarrello()" color="primary" mat-button>Aggiungi al carrello</button></div>
-                    
-                    <mat-form-field style="width: 50px;">
-                        <input matInput type="number" [(ngModel)]="quantita">
-                    </mat-form-field>
-                </div>
-                <button (click)="commenta()" mat-button>COMMENTA</button>
             </mat-card-actions>
         </mat-card>
 
@@ -44,6 +41,6 @@
 
 <ng-template #noProdotti>
     <div class="pageContainer">
-        <p>Al momento non ci sono prodotti disponibili</p>
+        <p>Nessun prodotto presente nel carrello</p>
     </div>
 </ng-template>

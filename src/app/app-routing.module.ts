@@ -15,6 +15,7 @@ import { ProdottiClienteComponent } from './components/cliente/prodotti-cliente/
 import { ProfiloClienteComponent } from './components/cliente/profilo-cliente/profilo-cliente.component';
 import { HomeClienteComponent } from './components/cliente/home-cliente/home-cliente.component';
 import { InventarioDipendenteComponent } from './components/dipendente/inventario-dipendente/inventario-dipendente.component';
+import { CarrelloComponent } from './components/cliente/carrello/carrello.component';
 
 const routes: Routes = [
 
@@ -40,6 +41,7 @@ const routes: Routes = [
   { path: 'cliente/home', component: HomeClienteComponent },
   { path: 'cliente/prodotti', component: ProdottiClienteComponent },
   { path: 'cliente/profilo', component: ProfiloClienteComponent },
+  { path: 'cliente/carrello', component: CarrelloComponent },
   
   { path: '**', component: NotFoundComponent }
 

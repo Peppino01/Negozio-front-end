@@ -14,7 +14,10 @@
           <input matInput type="password" placeholder="Password" formControlName="password" name="password">
         </mat-form-field>
         <br><br>
-        <button [disabled]="loginForm.invalid" mat-raised-button color="primary" (click)="login()">Login</button>
+        <div style="display: flex; justify-content: space-between;">
+          <button [disabled]="loginForm.invalid" mat-raised-button color="primary" (click)="login()">Login</button>
+          <mat-checkbox [(ngModel)]="ricordami" [ngModelOptions]="{standalone: true}">Ricordami</mat-checkbox>
+        </div>
       </form>
       
       <a (click)="goToSignin()">Registrati</a>
