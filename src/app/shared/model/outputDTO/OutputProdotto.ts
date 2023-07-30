@@ -1,5 +1,5 @@
 import { OutputInventario } from "./OutputInventario"
-import { OutputRecenzione } from "./OutputRecenzione"
+import { OutputRecensione } from "./OutputRecensione"
 import { OutputVendita } from "./OutputVendita"
 
 
@@ -8,15 +8,15 @@ export class OutputProdotto {
     prezzo: number
     descrizione: string
     vendite: OutputVendita[]
-    recenzioni: OutputRecenzione[]
+    recensioni: OutputRecensione[]
     inventario: OutputInventario[]
 
-    constructor(nome: string, prezzo: number, descrizione: string, vendite: OutputVendita[], recenzioni: OutputRecenzione[], inventario: OutputInventario[]) {
+    constructor(nome: string, prezzo: number, descrizione: string, vendite: OutputVendita[], recensioni: OutputRecensione[], inventario: OutputInventario[]) {
         this.nome = nome
         this.prezzo = prezzo
         this.descrizione = descrizione
         this.vendite = vendite
-        this.recenzioni = recenzioni
+        this.recensioni = recensioni
         this.inventario = inventario
     }
 }

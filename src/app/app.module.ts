@@ -42,6 +42,7 @@ import { ProdottiAdminComponent } from './components/admin/prodotti-admin/prodot
 import { RegistroAdminComponent } from './components/admin/registro-admin/registro-admin.component';
 import { InventarioDipendenteComponent } from './components/dipendente/inventario-dipendente/inventario-dipendente.component';
 import { SaveProdottoDialog } from './components/dipendente/prodotti-dipendente/save-prodotto';
+import { InsertRecensioneDialog } from './components/cliente/prodotti-cliente/insert-recensione';
 import { DialogOverviewExampleDialog } from './components/admin/registro-admin/newTransazioneDialog';
 import { CarrelloComponent } from './components/cliente/carrello/carrello.component';
 
@@ -68,6 +69,7 @@ import { CarrelloComponent } from './components/cliente/carrello/carrello.compon
     RegistroAdminComponent,
     InventarioDipendenteComponent,
     SaveProdottoDialog,
+    InsertRecensioneDialog,
     DialogOverviewExampleDialog,
     CarrelloComponent
   ],

@@ -1,5 +1,5 @@
 import { Genere } from "../Genere"
-import { InputRecenzione } from "./InputRecenzione"
+import { InputRecensione } from "./InputRecensione"
 import { InputTransazione } from "./InputTransazione"
 
 export class InputCliente {
@@ -12,9 +12,9 @@ export class InputCliente {
     dataNascita: Date
     genere: Genere
     transazioni: InputTransazione[]
-    recenzioni: InputRecenzione[]
+    recensioni: InputRecensione[]
 
-    constructor(id: number, nome: string, cognome: string, email: string, password: string, numTelefono: string, dataNascita: Date, genere: Genere, transazioni: InputTransazione[], recenzioni: InputRecenzione[]) {
+    constructor(id: number, nome: string, cognome: string, email: string, password: string, numTelefono: string, dataNascita: Date, genere: Genere, transazioni: InputTransazione[], recensioni: InputRecensione[]) {
         this.id = id
         this.nome = nome
         this.cognome = cognome
@@ -24,6 +24,6 @@ export class InputCliente {
         this.dataNascita = dataNascita
         this.genere = genere
         this.transazioni = transazioni
-        this.recenzioni = recenzioni
+        this.recensioni = recensioni
     }
 }

@@ -34,8 +34,27 @@
                         <input matInput type="number" [(ngModel)]="quantita">
                     </mat-form-field>
                 </div>
-                <button (click)="commenta()" mat-button>COMMENTA</button>
+                <button (click)="openInsertRecensioneDialog()" mat-button>COMMENTA</button>
             </mat-card-actions>
+            <mat-divider></mat-divider>
+            <br>
+            <div *ngIf="recensioni.length > 0; else noRecensioni">
+                <h3>Recensioni</h3>
+                <mat-list role="list">
+                    <mat-list-item role="listitem" *ngFor="let recensione of recensioni">
+                        <span mat-line>{{recensione.nome}} {{recensione.cognome}} - <span class="labelColor">{{extractDateFromDateStr(recensione.dataPubblicazione)}}</span></span>
+                        <span mat-line>
+                            <mat-icon *ngFor="let star of stars" [ngClass]="{ 'selected': recensione.valutazione >= star }">star</mat-icon>
+                        </span>
+                        <span mat-line>{{recensione.commento}}</span>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+            <ng-template #noRecensioni>
+                <div>
+                    <p>Questo prodotto non ha recensioni</p>
+                </div>
+            </ng-template>
         </mat-card>
 
     </div>

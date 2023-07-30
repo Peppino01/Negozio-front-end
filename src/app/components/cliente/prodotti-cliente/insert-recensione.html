@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>Inserisci una recensione</h1>
+
+<form [formGroup]="insertRecensioneForm">
+
+  <mat-slider
+    class="rating-slider"
+    min="1"
+    max="5"
+    step="1"
+    thumbLabel
+    tickInterval="1"
+    formControlName="valutazione"
+  ></mat-slider>
+
+  <div class="rating-container">
+    <mat-icon
+      *ngFor="let star of stars"
+      [ngClass]="{ 'selected': star <= insertRecensioneForm.get('valutazione')?.value, 'hovered': star <= hoveredRating }"
+      (click)="onStarClicked(star)"
+      (mouseover)="onStarHovered(star)"
+      (mouseleave)="onStarHovered(0)"
+      matTooltipPosition="above"
+      >star</mat-icon
+    >
+  </div>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Descrizione</mat-label>
+    <textarea matInput formControlName="commento" cols="40" rows="5"></textarea>
+  </mat-form-field>
+
+</form>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Anulla</button>
+  <button mat-button [disabled]="insertRecensioneForm.invalid" color="primary" (click)="sendRecensione()">Salva</button>
+</div>
