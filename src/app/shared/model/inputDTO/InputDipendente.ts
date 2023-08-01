@@ -5,10 +5,10 @@ export class InputDipendente {
     email: string
     password: string
     numTelefono: string
-    dataNascita: Date
+    dataNascita: string
     stipendio: number
 
-    constructor(id: number, nome: string, cognome: string, email: string, password: string, numTelefono: string, dataNascita: Date, stipendio: number) {
+    constructor(id: number, nome: string, cognome: string, email: string, password: string, numTelefono: string, dataNascita: string, stipendio: number) {
         this.id = id
         this.nome = nome
         this.cognome = cognome

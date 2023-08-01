@@ -26,7 +26,7 @@
         <p id="email">{{dettaglioDipendente.numTelefono}}</p>
         <mat-divider></mat-divider>
         <label class="dettaglioLabel" for="email">Data di nascita:</label>
-        <p id="email">{{dettaglioDipendente.dataNascita}}</p>
+        <p id="email">{{utilityService.extractDateFromDateStr(dettaglioDipendente.dataNascita)}}</p>
         <mat-divider></mat-divider>
         <label class="dettaglioLabel" for="email">Stipendio:</label>
         <p id="email">{{dettaglioDipendente.stipendio}}</p>
@@ -84,7 +84,7 @@
                 </mat-form-field>
                 <br>
                 <div class="submitContainer">
-                    <button [disabled]="newDipendenteForm.invalid" mat-raised-button color="primary" (click)="signin()">Registrati</button>
+                    <button [disabled]="newDipendenteForm.invalid" mat-raised-button color="primary" (click)="signin()">Crea</button>
                 </div>
                 
               </form>

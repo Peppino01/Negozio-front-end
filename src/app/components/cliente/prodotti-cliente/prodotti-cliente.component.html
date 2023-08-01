@@ -42,7 +42,7 @@
                 <h3>Recensioni</h3>
                 <mat-list role="list">
                     <mat-list-item role="listitem" *ngFor="let recensione of recensioni">
-                        <span mat-line>{{recensione.nome}} {{recensione.cognome}} - <span class="labelColor">{{extractDateFromDateStr(recensione.dataPubblicazione)}}</span></span>
+                        <span mat-line>{{recensione.nome}} {{recensione.cognome}} - <span class="labelColor">{{utilityService.extractDateFromDateStr(recensione.dataPubblicazione)}}</span></span>
                         <span mat-line>
                             <mat-icon *ngFor="let star of stars" [ngClass]="{ 'selected': recensione.valutazione >= star }">star</mat-icon>
                         </span>

@@ -5,6 +5,7 @@ import { Page } from 'src/app/shared/model/Page';
 import { InputDipendente } from 'src/app/shared/model/inputDTO/InputDipendente';
 import { OutputDipendente } from 'src/app/shared/model/outputDTO/OutputDipendente';
 import { AdminService } from 'src/app/shared/services/admin.service';
+import { UtilityService } from 'src/app/shared/services/utility.service';
 
 @Component({
   selector: 'app-dipendenti-admin',
@@ -16,7 +17,6 @@ export class DipendentiAdminComponent implements OnInit {
   linkedPages: Page[] = [
     { title: 'Home', url: 'admin/home' },
     { title: 'Gestione dipendenti', url: 'admin/dipendenti' },
-    { title: 'Gestione prodotti', url: 'admin/prodotti' },
     { title: 'Registro', url: 'admin/registro' },
     { title: 'Esci', url: 'login' }
   ];
@@ -30,7 +30,8 @@ export class DipendentiAdminComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private adminService: AdminService
+    private adminService: AdminService,
+    public utilityService: UtilityService
   ) {
     this.newDipendenteForm = this.formBuilder.group({
       nome: ['Giuseppe', Validators.required],
