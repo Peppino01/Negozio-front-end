@@ -14,6 +14,12 @@ export class UserService {
     private http: HttpClient
   ) { }
 
+
+  getInfoCliente(): Observable<any> {
+    let params = new HttpParams().set('email', this.getEmailFromStorage())
+
+    return this.http.get(environment.hostname + '/clienti/info', { params: params })
+  }
   
   // carrello
 

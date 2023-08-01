@@ -1,3 +1,14 @@
 <app-toolbar [pages]="linkedPages" title="Cliente"></app-toolbar>
 
-<p>home-cliente works!</p>
+<div class="container">
+
+    <h1>Ciao {{clienteInfo.nome}} {{clienteInfo.cognome}}</h1>
+
+    <p *ngIf="clienteInfo.numProdottiCarrello > 0; else zeroProdotti">
+        hai {{clienteInfo.numProdottiCarrello}} prodott<ng-container *ngIf="clienteInfo.numProdottiCarrello == 1; else plurale">o</ng-container><ng-template #plurale>i</ng-template>
+        nel carrello
+    </p>
+
+    <ng-template #zeroProdotti><p>Non hai prodotti nel carrello</p></ng-template>
+
+</div>

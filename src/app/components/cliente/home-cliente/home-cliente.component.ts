@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Page } from 'src/app/shared/model/Page';
+import { InputInfoCliente } from 'src/app/shared/model/inputDTO/InputInfoCliente';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-home-cliente',
@@ -7,6 +9,8 @@ import { Page } from 'src/app/shared/model/Page';
   styleUrls: ['./home-cliente.component.scss']
 })
 export class HomeClienteComponent implements OnInit {
+
+  clienteInfo!: InputInfoCliente
 
   linkedPages: Page[] = [
     { title: 'Home', url: 'cliente/home' },
@@ -16,9 +20,16 @@ export class HomeClienteComponent implements OnInit {
     { title: 'Esci', url: 'login' }
   ];
 
-  constructor() { }
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
+    this.userService.getInfoCliente().subscribe(
+      (res: InputInfoCliente) => {
+        this.clienteInfo = res
+      }
+    )
   }
 
 }
