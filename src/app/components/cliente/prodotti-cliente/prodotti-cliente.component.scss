@@ -21,6 +21,16 @@
     user-select: none;
 }
 
+.promotionStar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: yellow;
+    background-color: black;
+    border-radius: 50%;
+    transform: scale(1.5);
+}
+
 .labelColor{
     color: gray;
 }

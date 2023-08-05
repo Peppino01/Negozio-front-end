@@ -25,6 +25,7 @@ export class ProdottiClienteComponent implements OnInit {
     { title: 'Esci', url: 'login' }
   ];
 
+  prodottiInPromozione: InputProdottoInventario[] = []
   prodottiDisponibili: InputProdottoInventario[] = []
   prodottoSelezionato: InputProdottoInventario | null = null
 
@@ -42,6 +43,14 @@ export class ProdottiClienteComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.publicAi.getInventarioProdotti(StatoProdotto.IN_PROMOZIONE).subscribe(
+      (res: InputProdottoInventario[]) => {
+        this.prodottiInPromozione = res
+      },
+      (responseError) => {
+        console.log(responseError);
+      }
+    )
     this.publicAi.getInventarioProdotti(StatoProdotto.DISPONIBILE).subscribe(
       (res: InputProdottoInventario[]) => {
         this.prodottiDisponibili = res

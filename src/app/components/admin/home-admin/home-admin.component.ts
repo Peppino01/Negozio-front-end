@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Page } from 'src/app/shared/model/Page';
+import { InputInfoProprietario } from 'src/app/shared/model/inputDTO/InputInfoProprietario';
+import { AdminService } from 'src/app/shared/services/admin.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -9,6 +11,8 @@ import { environment } from 'src/environments/environment';
 })
 export class HomeAdminComponent implements OnInit {
 
+  proprietarioInfo!: InputInfoProprietario
+
   linkedPages: Page[] = [
     { title: 'Home', url: 'admin/home' },
     { title: 'Gestione dipendenti', url: 'admin/dipendenti' },
@@ -16,9 +20,16 @@ export class HomeAdminComponent implements OnInit {
     { title: 'Esci', url: 'login' }
   ];
 
-  constructor() { }
+  constructor(
+    private adminService: AdminService
+  ) { }
 
   ngOnInit(): void {
+    this.adminService.getInfoProprietario().subscribe(
+      (res: InputInfoProprietario) => {
+        this.proprietarioInfo = res
+      }
+    )
   }
 
 }

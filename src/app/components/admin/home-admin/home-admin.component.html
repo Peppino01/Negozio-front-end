@@ -1,3 +1,13 @@
 <app-toolbar [pages]="linkedPages" title="Proprietario"></app-toolbar>
 
-Home
+<div class="container">
+
+    <h1>Ciao {{proprietarioInfo.nome}} {{proprietarioInfo.cognome}}</h1>
+
+    <!--<p *ngIf="proprietarioInfo.numDipendenti > 0; else zeroProdotti">
+        hai {{proprietarioInfo.numDipendenti}} dipendent<ng-container *ngIf="proprietarioInfo.numDipendenti == 1; else plurale">e</ng-container><ng-template #plurale>i</ng-template>
+    </p>
+
+    <ng-template #zeroProdotti><p>Non hai ancora nessun dipendente</p></ng-template>-->
+
+</div>

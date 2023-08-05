@@ -6,6 +6,17 @@
 
         <mat-selection-list class="prodottiList" [multiple]="false">
             <h1>Prodotti disponibili</h1>
+            <mat-list-option class="listItem" *ngFor="let prodotto of prodottiInPromozione" [selected]="prodottoSelezionato == prodotto" (click)="selezionaProdotto(prodotto)">
+                <div mat-line>{{prodotto.nome}}</div>
+                <div mat-line>
+                    <label class="labelColor" for="prezzo">Prezzo: </label>
+                    <span id="prezzo">{{prodotto.prezzo}}$</span>
+                    <span class="spacer"></span>
+                    <label class="labelColor" for="prezzo">Disponibili: </label>
+                    <span id="prezzo">{{prodotto.quantita}}</span>
+                </div>
+                <i class="material-icons promotionStar">star</i>
+            </mat-list-option>
             <mat-list-option class="listItem" *ngFor="let prodotto of prodottiDisponibili" [selected]="prodottoSelezionato == prodotto" (click)="selezionaProdotto(prodotto)">
                 <div mat-line>{{prodotto.nome}}</div>
                 <div mat-line>

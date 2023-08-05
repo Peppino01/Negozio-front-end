@@ -16,6 +16,12 @@ export class AdminService {
     private http: HttpClient
   ) { }
 
+  getInfoProprietario(): Observable<any> {
+    let params = new HttpParams().set('email', this.getEmailFromStorage())
+
+    return this.http.get(environment.hostname + '/proprietario/info', { params: params })
+  }
+
   addNewDipendente(newDipendente: OutputDipendente): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
     const body = JSON.stringify(newDipendente)
@@ -54,6 +60,25 @@ export class AdminService {
     const body = JSON.stringify(transazione)
     
     return this.http.post(environment.hostname + '/transazioni/insert', body, {headers})
+  }
+
+
+  // utility
+  private getEmailFromStorage(): string {
+    // Controllo prima nel session storage
+    const emailInSessionStorage = sessionStorage.getItem('email');
+    if (emailInSessionStorage) {
+      return emailInSessionStorage;
+    }
+
+    // Se l'email non è nel session storage, controlla nel local storage
+    const emailInLocalStorage = localStorage.getItem('email');
+    if (emailInLocalStorage) {
+      return emailInLocalStorage;
+    }
+
+    // Se l'email non è presente in entrambi gli storage, restituisci una stringa vuota
+    return '';
   }
 
 }
