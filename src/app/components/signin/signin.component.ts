@@ -52,6 +52,7 @@ export class SigninComponent implements OnInit {
     this.authService.signin(newUtente).subscribe(
       (res: Object) => {
         this.errorMessage = ""
+        localStorage.setItem('email', newUtente.email)
         this.router.navigateByUrl('/cliente/home')
       },
       (responseError: HttpErrorResponse) => {
